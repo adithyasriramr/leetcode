@@ -1,0 +1,26 @@
+#Input: num = 58
+#Output: "LVIII"
+#Explanation: L = 50, V = 5, III = 3.
+
+num=int(input("Enter the number:"))
+d = {1000: 'M',
+     900: 'CM', 
+     500: 'D', 
+     400: 'CD', 
+     100: 'C', 
+     90: 'XC',
+     50: 'L', 
+     40: 'XL', 
+     10: 'X', 
+     9: 'IX', 
+     5: 'V', 
+     4: 'IV', 
+     1: 'I'}
+s = "" # To store the Solution
+while(num): #while num is TRUE
+	for r in d: #Find a number in Dictionary which is <= num
+		if r <= num:
+			s = s+(d[r])*int(num/r)  # Divide 'num' with 'r' to get integer quotient then, multiply the quotient with value at d[r].
+			num = num % r # update num
+			break # break the loop because you found the 'r' which is nearest to num and smaller than num.
+print(s)
