@@ -1,0 +1,32 @@
+#Input: nums = [-1,0,1,2,-1,-4]
+#Output: [[-1,-1,2],[-1,0,1]]
+#Notice that the solution set must not contain duplicate triplets.
+
+n=int(input("Enter the number of elements in the list:"))
+arr=[]
+for i in range(n):
+  y=int(input("Enter the element:"))
+  arr.append(y)
+zero=[]
+sub=[]
+res=[]
+for i in range(n):
+  for j in range(i+1,n):
+    for k in range(j+1,n):
+      if arr[i]+arr[j]+arr[k]==0:
+        zero.append(arr[i])
+        zero.append(arr[j])
+        zero.append(arr[k])
+        res.append(zero)
+        zero=[]
+        break
+l=len(res)
+#to remove duplicates
+for i in range(l):
+  for j in range(i+1,l):
+    if res[i][0] in res[j]:
+      if res[i][1] in res[j]:
+        if res[i][2] in res[j]:
+          res.pop(j)
+    l=l-1
+print(res)
