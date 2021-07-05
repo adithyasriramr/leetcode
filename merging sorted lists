@@ -1,0 +1,53 @@
+#Input: l1 = [1,2,4], l2 = [1,3,4]
+#Output: [1,1,2,3,4,4]
+
+class Node:#class for first node
+    def __init__(self, data):#constructor to initialize the data and the pointer, every constructor will have a parameter called self
+       self.data = data#data of the first node
+       self.next = None#next value in 1st first node none for now because it doesnt point to anything as of now
+ 
+class LinkedList:#class to link the different nodes
+    def __init__(self):#constructor for linkedlist class
+        self.head = None#initially there are no elements so head is null
+        
+    def appendend(self,data):
+      if self.head is None:
+        self.head=Node(data)
+      else:
+        last_node=Node(data)
+        temp=self.head
+        while temp.next:
+          temp=temp.next
+        temp.next=last_node
+      
+    def display(self):
+      if self.head is None:
+        print("List is empty!")
+      else:
+        current = self.head
+        while current!=None:
+          print(current.data,"-->",end = ' ')
+          current = current.next
+ 
+list1 = LinkedList()
+list2 = LinkedList()
+list3 = LinkedList()
+arr=[]
+n=int(input("Enter the number of elements in list 1:"))
+for i in range(n):
+  y=int(input("Enter the elements in a sorted order:"))
+  list1.appendend(y)
+  arr.append(y)
+list1.display()
+print("\n")
+n=int(input("Enter the number of elements in list 2:"))
+for i in range(n):
+  y=int(input("Enter the elements in a sorted order:"))
+  list2.appendend(y)
+  arr.append(y)
+list2.display()
+print("\n")
+arr.sort()
+for i in range(len(arr)):
+  list3.appendend(arr[i])
+list3.display()
