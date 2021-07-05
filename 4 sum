@@ -1,0 +1,35 @@
+#Input: nums = [1,0,-1,0,-2,2], target = 0
+#Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+#Input: nums = [2,2,2,2,2], target = 8
+#Output: [[2,2,2,2]]
+target=int(input("Enter the target:"))
+n=int(input("Enter the number of elements in the list:"))
+arr=[]
+for i in range(n):
+  y=int(input("Enter the element:"))
+  arr.append(y)
+targ=[]
+res=[]
+for i in range(n):
+  for j in range(i+1,n):
+    for k in range(j+1,n):
+      for l in range(k+1,n):
+        if arr[i]+arr[j]+arr[k]+arr[l]==target:     
+          targ.append(arr[i])
+          targ.append(arr[j])
+          targ.append(arr[k])
+          targ.append(arr[l])
+          res.append(targ)
+          targ=[]
+          break
+#to remove duplicates
+l=len(res)
+for i in range(l):
+  for j in range(i+1,l):
+    if res[i][0] in res[j]:
+      if res[i][1] in res[j]:
+        if res[i][2] in res[j]:
+          if res[i][3] in res[j]:
+            res.pop(j)
+    l=l-1
+print(res)
