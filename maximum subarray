@@ -3,10 +3,8 @@ n=len(h)
 arr=[]
 if n>1:
 	for i in range(n-1):
-		s=h[i]
 		for j in range(i+1,n):
-			s+=h[j]
-			arr.append(s)
+			arr.append(sum(h[i:j+1]))
 	print(max(arr))
 else:
 	print(max(h))
